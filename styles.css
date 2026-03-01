@@ -1,0 +1,617 @@
+/* Base Reset e Fontes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+:root {
+    /* Paleta Solicitada */
+    --bg-marrom-claro: #DECDBA;
+    /* Marrom claro mais escuro/intenso */
+    --text-marrom-esc: #4A2E1B;
+    /* Marrom escuro forte */
+    --white: #FFFFFF;
+    --detalhe-marrom: #D2B48C;
+    --cinza-claro: #E2E2E2;
+    --dourado: #D4AF37;
+    --border-color: rgba(74, 46, 27, 0.15);
+
+    /* Variáveis de UI */
+    --menu-width: 280px;
+    --transition-speed: 0.3s;
+}
+
+body {
+    background-color: var(--bg-marrom-claro);
+    color: var(--text-marrom-esc);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ==================================
+   LOGIN OVERLAY
+================================== */
+.login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-marrom-claro);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(74, 51, 32, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.login-box h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-marrom-esc);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.login-box p {
+    color: var(--text-marrom-esc);
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.login-box input:focus {
+    border-color: var(--text-marrom-esc);
+}
+
+.login-box .login-error {
+    color: #cc0000;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.login-box button {
+    width: 100%;
+    background-color: var(--text-marrom-esc);
+    color: var(--white);
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.login-box button:hover {
+    background-color: #311d10;
+}
+
+/* ==================================
+   MENU HAMBÚRGUER FLUTUANTE
+================================== */
+.menu-btn {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    z-index: 1000;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.menu-btn:hover {
+    background: rgba(74, 51, 32, 0.05);
+}
+
+.sandwich-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--text-marrom-esc);
+}
+
+/* ==================================
+   SIDE MENU (DRAWER)
+================================== */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    /* Escondido por padrão */
+    width: var(--menu-width);
+    height: 100vh;
+    background-color: var(--white);
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.05);
+    z-index: 1050;
+    transition: left var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.side-menu.open {
+    left: 0;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.menu-header h2 {
+    font-size: 1.2rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--text-marrom-esc);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-marrom-esc);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 2rem 0;
+    flex-grow: 1;
+}
+
+.nav-links li {
+    margin-bottom: 0.5rem;
+}
+
+.nav-links a {
+    display: block;
+    padding: 1rem 2rem;
+    color: var(--text-marrom-esc);
+    text-decoration: none;
+    font-size: 1.3rem;
+    /* Aumentei um pouquinho o tamanho */
+    font-family: 'Playfair Display', serif;
+    /* Nossa fonte sofisticada */
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.nav-links a:hover {
+    background-color: var(--bg-marrom-claro);
+    padding-left: 2.5rem;
+}
+
+.nav-links a.active {
+    font-weight: 600;
+    border-left-color: var(--text-marrom-esc);
+    background-color: rgba(74, 51, 32, 0.03);
+}
+
+/* OVERLAY ESCURO ATRÁS DO MENU */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1025;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-speed);
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: all;
+    backdrop-filter: blur(2px);
+}
+
+/* ==================================
+   CONTAINER PRINCIPAL (SPA PAGES)
+================================== */
+.app-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 4rem 2rem;
+    /* Espaço pro menu hamburger */
+}
+
+/* Troca de Telas (Fade) */
+.page {
+    width: 100%;
+    max-width: 1000px;
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.page.active {
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================================
+   PÁGINA: HOME (HERO)
+================================== */
+#page-home {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: calc(100vh - 8rem);
+    display: flex;
+    /* Garantindo que a main page engrosse o flex pra puxar com força pro centro */
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+.title-wrapper {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.main-title {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    /* Aumentado signicativamente */
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--text-marrom-esc);
+}
+
+.house-icon-wrapper {
+    background-color: rgba(74, 51, 32, 0.05);
+    padding: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.house-icon {
+    width: 54px;
+    height: 54px;
+}
+
+/* Seção Citação Bíblica */
+.quote-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    max-width: 600px;
+    text-align: center;
+}
+
+.quote-text {
+    font-size: 1.4rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--text-marrom-esc);
+    line-height: 1.5;
+}
+
+.quote-author {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--text-marrom-esc);
+    text-transform: uppercase;
+}
+
+/* ==================================
+   PÁGINA: CATEGORIAS (TABELA)
+================================== */
+.category-header {
+    margin-bottom: 3rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.category-title {
+    font-size: 2.8rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--text-marrom-esc);
+    text-transform: capitalize;
+}
+
+/* Tablestyles Modernos */
+.table-container {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background-color: rgba(245, 238, 230, 0.5);
+}
+
+th {
+    padding: 1.2rem 1.5rem;
+    font-weight: 500;
+    color: var(--text-marrom-esc);
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.col-emoji {
+    text-align: center;
+    width: 80px;
+}
+
+td {
+    padding: 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.2s;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background-color: rgba(74, 51, 32, 0.02);
+}
+
+/* CAMPOS EDITÁVEIS NAS TABELAS */
+.editable-cell {
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    color: var(--text-marrom-esc);
+    outline: none;
+    resize: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.editable-cell:focus {
+    background-color: rgba(74, 51, 32, 0.04);
+}
+
+td.emoji-cell {
+    text-align: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    user-select: none;
+    position: relative;
+}
+
+td.emoji-cell:hover {
+    background-color: rgba(74, 51, 32, 0.06);
+}
+
+/* LINK FIELD BEHAVIOR */
+.link-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.link-input {
+    color: #0056b3;
+    /* Cor padrao de link que contrasta bem */
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    padding-right: 3.5rem;
+    /* Espaço maior para o botão não sobrepor */
+}
+
+.edit-link-btn {
+    position: absolute;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.2rem;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.edit-link-btn:hover {
+    opacity: 1;
+}
+
+/* Botão Adicionar Linha */
+.btn-add {
+    background-color: var(--text-marrom-esc);
+    color: var(--white);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 15px rgba(74, 51, 32, 0.15);
+}
+
+.btn-add:hover {
+    background-color: #311d10;
+    transform: translateY(-2px);
+}
+
+/* ==================================
+   RESPONSIVIDADE
+================================== */
+@media (max-width: 768px) {
+    .title-wrapper {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .quote-text {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+    }
+
+    .table-container {
+        /* Removemos o simples overflow para fazer display em bloco nas tabelas para celular */
+        border: none;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    /* Configuração responsiva avançada para Tabelas no Celular */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        border: 1px solid var(--border-color);
+        background: var(--white);
+        border-radius: 12px;
+        margin-bottom: 1.5rem;
+        padding: 1rem 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    }
+
+    tr:last-child {
+        margin-bottom: 0;
+    }
+
+    td {
+        border: none;
+        position: relative;
+        padding-left: 45% !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+        min-height: 45px;
+    }
+
+    td:before {
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        width: 40%;
+        padding-right: 10px;
+        white-space: nowrap;
+        transform: translateY(-50%);
+        font-weight: 600;
+        color: var(--text-marrom-esc);
+        text-transform: uppercase;
+        font-size: 0.8rem;
+    }
+
+    td:nth-of-type(1):before {
+        content: "Produtos";
+    }
+
+    td:nth-of-type(2):before {
+        content: "Quantidades";
+    }
+
+    td:nth-of-type(3):before {
+        content: "Links";
+    }
+
+    td:nth-of-type(4):before {
+        content: "Status";
+    }
+
+    .editable-cell {
+        padding: 0.5rem;
+        background: rgba(74, 46, 27, 0.05);
+        border-radius: 6px;
+    }
+
+    /* A célula em si que armazena o botão/emoji proibir a quebra do grid do padding */
+    td.emoji-cell {
+        text-align: left;
+        padding-left: 45% !important;
+        display: flex;
+        align-items: center;
+        min-height: 45px;
+    }
+
+    .col-emoji {
+        /* Removido width: 100% e padding-left para evitar conflito com td.emoji-cell */
+        /* Mantido text-align para consistência, mas pode ser redundante */
+        text-align: left;
+    }
+
+    .app-container {
+        padding: 6rem 1rem 3rem 1rem;
+    }
+
+    .main-title {
+        font-size: 2.2rem;
+    }
+}

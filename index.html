@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enxoval de Casa Nova</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Login Overlay -->
+    <div id="login-overlay" class="login-overlay">
+        <div class="login-box">
+            <h2>Acesso Restrito</h2>
+            <p>Por favor, insira a senha para acessar o enxoval.</p>
+            <input type="password" id="login-password" placeholder="Senha">
+            <p id="login-error" class="login-error" style="display: none;">Senha incorreta!</p>
+            <button id="login-btn">Entrar</button>
+        </div>
+    </div>
+
+    <!-- Ícone Hambúrguer Flutuante -->
+    <button id="menu-btn" class="menu-btn" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" fill="none" class="sandwich-icon" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
+
+    <!-- Side Menu (Drawer Lateral) -->
+    <nav id="side-menu" class="side-menu">
+        <div class="menu-header">
+            <h2>Cômodos</h2>
+            <button id="close-btn" class="close-btn" aria-label="Fechar menu">&times;</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" data-page="home" class="active">Página Inicial</a></li>
+            <li><a href="#" data-page="cozinha">Cozinha</a></li>
+            <li><a href="#" data-page="sala">Sala</a></li>
+            <li><a href="#" data-page="quarto">Quarto</a></li>
+            <li><a href="#" data-page="lavanderia">Lavanderia</a></li>
+            <li><a href="#" data-page="banheiro">Banheiro</a></li>
+            <li><a href="#" data-page="mesa-posta">Mesa Posta</a></li>
+            <li><a href="#" data-page="decoracoes">Decorações</a></li>
+        </ul>
+    </nav>
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Container Principal Responsivo -->
+    <main id="app-container" class="app-container">
+
+        <!-- PÁGINA: HOME -->
+        <section id="page-home" class="page active">
+            <div class="hero-content">
+                <div class="title-wrapper">
+                    <h1 class="main-title">Enxoval de casa nova</h1>
+                </div>
+
+                <!-- Ícone de Casinha Branca Centralizado -->
+                <div class="house-icon-wrapper">
+                    <svg class="house-icon" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </div>
+
+                <div class="quote-section">
+                    <p class="quote-text">consagre ao senhor tudo o que você faz, e seus planos serão bem sucedidos</p>
+                    <span class="quote-author">PROV. 16:3</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PÁGINA: CATEGORIAS (Tabela Genérica) -->
+        <section id="page-category" class="page hidden">
+            <header class="category-header">
+                <h2 id="category-title" class="category-title">Cômodo</h2>
+            </header>
+
+            <div class="table-container">
+                <table id="enxoval-table">
+                    <thead>
+                        <tr>
+                            <th>produtos</th>
+                            <th>quantidades</th>
+                            <th>links</th>
+                            <th class="col-emoji">status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Linhas serão inseridas aqui via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <button id="add-row-btn" class="btn-add">+ Adicionar Produto</button>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
