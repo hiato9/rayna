@@ -216,6 +216,35 @@ body {
     background-color: rgba(74, 51, 32, 0.03);
 }
 
+.menu-actions {
+    padding: 0 2rem 2rem 2rem;
+    margin-top: auto;
+}
+
+.btn-tool {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #f1f1f1;
+    color: var(--text-marrom-esc);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-tool:hover {
+    background-color: var(--text-marrom-esc);
+    color: var(--white);
+    border-color: var(--text-marrom-esc);
+}
+
 /* OVERLAY ESCURO ATRÁS DO MENU */
 .overlay {
     position: fixed;
