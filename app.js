@@ -244,6 +244,52 @@ document.addEventListener('DOMContentLoaded', () => {
         addNewRow(true);
     });
 
+    // === 5. EXPORTAR / IMPORTAR DADOS ===
+    const exportBtn = document.getElementById('export-btn');
+    const importBtn = document.getElementById('import-btn');
+    const importFile = document.getElementById('import-file');
+
+    if (exportBtn) {
+        exportBtn.addEventListener('click', () => {
+            const data = localStorage.getItem('enxovalData');
+            if (!data || data === '{}') {
+                alert('Nenhum dado para exportar.');
+                return;
+            }
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'enxoval_dados.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+    }
+
+    if (importBtn && importFile) {
+        importBtn.addEventListener('click', () => {
+            importFile.click();
+        });
+
+        importFile.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const jsonData = JSON.parse(event.target.result);
+                    localStorage.setItem('enxovalData', JSON.stringify(jsonData));
+                    alert('Dados importados com sucesso! A página será recarregada.');
+                    location.reload();
+                } catch (error) {
+                    alert('Erro ao importar arquivo. Certifique-se de que é um arquivo .json válido.');
+                }
+            };
+            reader.readAsText(file);
+        });
+    }
+
     // Fazer foco voltar a primeira aba com uma injeção de estilo manual no JS pro fallback caso precise
     document.getElementById('page-home').style.display = 'flex';
 });
